@@ -14,9 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.VolleyError;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +27,8 @@ public class Perfil extends AppCompatActivity
     ImageView iv;
     IResult mResultCallback = null;
     VolleyService mVolleyService;
+    ConvertirImagen con = new ConvertirImagen();
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -72,12 +72,8 @@ public class Perfil extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                // Toast.makeText( MainActivity.this, "Hola Mundo", Toast.LENGTH_LONG).show();
-                ByteArrayOutputStream byt = new ByteArrayOutputStream(  );
-                Bitmap bitmap = ((BitmapDrawable)iv.getDrawable()).getBitmap();
-                bitmap.compress( Bitmap.CompressFormat.PNG, 100, byt );
-                byte[] byteA = byt.toByteArray();
-                String foto = Base64.encodeToString( byteA, Base64.DEFAULT );
+
+                String foto = con.BitmapAString( ((BitmapDrawable)iv.getDrawable()).getBitmap() );
                 mVolleyService.CambiarFoto( extras.getString("id"), foto );
             }
         });
@@ -88,6 +84,7 @@ public class Perfil extends AppCompatActivity
             public void onClick(View v)
             {
                 Intent intent = new Intent( "com.example.romulo.entregasfcc.Paquete" );
+                intent.putExtra( "id_usuario" , extras.getString( "id" ));
                 startActivity( intent );
             }
         });

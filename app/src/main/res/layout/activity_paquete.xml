@@ -28,18 +28,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <RadioButton android:id="@+id/radio_pirates"
+                <RadioButton android:id="@+id/radio_pendiente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="No entregados"/>
+                    android:text="Pendiente"/>
 
                 <RadioButton
-                    android:id="@+id/radio_ninjas"
+                    android:id="@+id/radio_entregado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Todos" />
+                    android:text="Entregado" />
             </RadioGroup>
         </LinearLayout>
 

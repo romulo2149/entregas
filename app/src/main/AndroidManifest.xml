@@ -30,6 +30,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".Enviar">
+            <intent-filter>
+                <action android:name="com.example.romulo.entregasfcc.Enviar" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Exito">
+            <intent-filter>
+                <action android:name="com.example.romulo.entregasfcc.Exito" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

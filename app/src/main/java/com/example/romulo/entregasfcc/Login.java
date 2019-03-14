@@ -3,15 +3,11 @@ package com.example.romulo.entregasfcc;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,9 +47,9 @@ public class Login extends AppCompatActivity
             {
                 //Toast.makeText( Login.this, response.toString(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent("com.example.romulo.entregasfcc.Perfil");
-                intent.putExtra("usuario",textoUsuario.getText().toString());
                 try
                 {
+                    intent.putExtra("usuario",response.get( "nombre" ).toString());
                     intent.putExtra("imagen",response.get( "foto" ).toString());
                     intent.putExtra("id", response.get("id").toString());
                 }
