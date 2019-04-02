@@ -32,14 +32,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Pendiente"/>
+                    android:text="Pendiente"
+                    android:textSize="9dp"/>
 
                 <RadioButton
                     android:id="@+id/radio_entregado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Entregado" />
+                    android:text="Entregado"
+                    android:textSize="9dp"/>
+                <RadioButton
+                    android:id="@+id/radio_rech"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rechazado"
+                    android:textSize="9dp"/>
             </RadioGroup>
         </LinearLayout>
 
@@ -59,10 +68,20 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
-                android:text="Enviar"/>
+                android:text="Mostrar"/>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/optBoton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Ruta optimizada"/>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -71,25 +90,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:orientation="vertical">
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/tablaPadre2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:stretchColumns="*">
 
+                <TableRow>
+                    <TextView
+                        android:text="Fecha Entrega"
+                        android:layout_width="0dp"/>
+                    <TextView
+                        android:text="Descripcion"
+                        android:layout_width="0dp"/>
+
+                </TableRow>
+
+            </TableLayout>
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/tablaPadre"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="5dp"
             android:stretchColumns="*">
 
-            <TableRow>
-                <TextView
-                    android:text="Fecha Entrega"
-                    android:layout_width="0dp"/>
-                <TextView
-                    android:text="Descripcion"
-                    android:layout_width="0dp"/>
-                <TextView
-                    android:text="Entregado"
-                    android:layout_width="0dp"/>
-            </TableRow>
+
 
         </TableLayout>
 

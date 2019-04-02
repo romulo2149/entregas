@@ -17,7 +17,6 @@ public class Login extends AppCompatActivity
     Button botonEntrar;
     TextView textoUsuario;
     TextView textoPass;
-    private String TAG = "MainActivity";
     IResult mResultCallback = null;
     VolleyService mVolleyService;
     @Override
@@ -33,7 +32,14 @@ public class Login extends AppCompatActivity
         botonEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mVolleyService.Login( textoUsuario.getText().toString(), textoPass.getText().toString() );
+                if(textoUsuario.getText().toString() == "" || textoPass.getText().toString() == "")
+                {
+                    Toast.makeText( Login.this, "Completa los campos", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    mVolleyService.Login( textoUsuario.getText().toString(), textoPass.getText().toString() );
+                }
             }
         });
     }
@@ -45,19 +51,22 @@ public class Login extends AppCompatActivity
             @Override
             public void notifySuccess(String requestType,JSONObject response)
             {
-                //Toast.makeText( Login.this, response.toString(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent("com.example.romulo.entregasfcc.Perfil");
-                try
-                {
-                    intent.putExtra("usuario",response.get( "nombre" ).toString());
-                    intent.putExtra("imagen",response.get( "foto" ).toString());
-                    intent.putExtra("id", response.get("id").toString());
+                try {
+                    if (response.getBoolean( "login" ) == true) {
+                        Intent intent = new Intent( "com.example.romulo.entregasfcc.Perfil" );
+
+                        intent.putExtra( "usuario", response.get( "nombre" ).toString() );
+                        intent.putExtra( "imagen", response.get( "foto" ).toString() );
+                        intent.putExtra( "id", response.get( "id" ).toString() );
+
+                        startActivity( intent );
+                    } else {
+                        Toast.makeText( Login.this, "Datos incorrectos", Toast.LENGTH_LONG ).show();
+                    }
                 }
-                catch (JSONException e)
-                {
-                    e.printStackTrace();
-                }
-                startActivity( intent );
+                catch (JSONException e) {
+                        e.printStackTrace();
+                    }
             }
 
             @Override

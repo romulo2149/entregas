@@ -30,4 +30,11 @@ public class Exito extends AppCompatActivity
         });
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent("com.example.romulo.entregasfcc.Paquete");
+        final Bundle extras = getIntent().getExtras();
+        intent.putExtra( "id_usuario" , extras.getString( "id_usuario" ));
+        startActivity( intent );
+    }
 }
